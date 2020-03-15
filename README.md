@@ -9,7 +9,7 @@
 apexcharts:
     git:
       url: https://github.com/nigeltiany/apexcharts.git
-      ref: master
+      ref: v0.1.0
 ```
 
 ### Install apexcharts
