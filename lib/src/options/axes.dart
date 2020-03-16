@@ -21,6 +21,7 @@ class ApexXAxis {
     ApexXAxisLabels labels,
     ApexAxisBorder axisBorder,
     ApexAxisTicks axisTicks,
+    ApexXAxisCrossHairs crosshairs,
     ApexAxisTitle title,
     ApexXAxisTooltip tooltip,
   });
