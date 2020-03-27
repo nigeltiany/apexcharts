@@ -13,9 +13,33 @@ var data = [30,40,35,50,49,60,70,91,125];
 
 var categories = [1991,1992,1993,1994,1995,1996,1997,1998,1999];
 
-var series = ApexAxisChartSeries(
+var series = ApexAxisChartSeries<num>(
   name: 'sales',
-  data: ApexAxisChartSeriesData(data),
+  data: data,
+);
+
+var seriesExampleError = ApexAxisChartSeries<ApexAxisChartSeriesData<String, num>>(
+  name: 'sales',
+  data: [
+    ApexAxisChartSeriesData(
+      x: '',
+//    y: "", // <- Type Error, Should be num
+      fillColor: '#39f',
+      strokeColor: '#fef'
+    )
+  ],
+);
+
+var seriesExample = ApexAxisChartSeries<ApexAxisChartSeriesData<num, num>>(
+  name: 'sales',
+  data: [
+    ApexAxisChartSeriesData(
+        x: 23,
+        y: 45,
+        fillColor: '#39f',
+        strokeColor: '#fef'
+    )
+  ],
 );
 
 void main() {
@@ -54,7 +78,7 @@ void main() {
 
     data.removeAt(0);
     data.add(Random().nextInt(130));
-    series.data = ApexAxisChartSeriesData(data);
+    series.data = data;
     chart.updateSeries([series], true);
 
   });

@@ -17,28 +17,23 @@ abstract class ApexChartSeries {}
 
 @JS()
 @anonymous
-class ApexAxisChartSeries implements ApexChartSeries {
+class ApexAxisChartSeries<T> implements ApexChartSeries {
   String name;
   String type;
-  ApexAxisChartSeriesData data;
+  Iterable<T> data;
   external factory ApexAxisChartSeries ({
     String name,
     String type,
-    ApexAxisChartSeriesData data,
+    Iterable<T> data,
   });
 }
 
 @JS()
 @anonymous
-class ApexAxisChartSeriesData {
-  external ApexAxisChartSeriesData([Iterable<num> n]);
-  external factory  ApexAxisChartSeriesData.withOptions({
-    dynamic x, dynamic y, String fillColor, String strokeColor
+class ApexAxisChartSeriesData<T1, T2> {
+  external factory  ApexAxisChartSeriesData({
+    T1 x, T2 y, String fillColor, String strokeColor
   });
-  external ApexAxisChartSeriesData.asMap([Iterable<Map<num, dynamic>> i]);
-//  TODO:
-//  | [number, (number | null)[]][]
-//  }[]
 }
 
 @JS()
