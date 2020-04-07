@@ -16,7 +16,7 @@ class ApexPlotOptions {
     ApexHeatMap heatmap,
     ApexPie pie,
     ApexResponsive responsive,
-    ApexChartSeries series,
+    Iterable series,
     ApexStates states,
   });
 }

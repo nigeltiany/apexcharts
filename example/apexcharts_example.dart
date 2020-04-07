@@ -15,14 +15,14 @@ var salesAsDouble = List<double>.from([30.4, 40.4, 35.4, 50.4, 49.4, 60.4, 70.4,
 var categories = [1991,1992,1993,1994,1995,1996,1997,1998,1999];
 
 // a series named Sales with data containing a list of integers
-var inline = ApexSeries<ApexAxisChartSeries<int>>()
+var inline = List<ApexAxisChartSeries<num>>()
     ..add(
       ApexAxisChartSeries()
         ..name = 'Sales'
         ..data = data
     );
 
-var inlineAll = ApexSeries<ApexAxisChartSeries<int>>()
+var inlineAll = List<ApexAxisChartSeries<num>>()
   ..addAll(
     [
       ApexAxisChartSeries()
@@ -43,7 +43,7 @@ var chartSales = ApexCharts(querySelector('#salesChart'),
 );
 
 
-var series = ApexSeries<ApexAxisChartSeries<num>>();
+List<ApexAxisChartSeries<num>> series;
 
 // ApexAxisChartSeries with name sales
 // and
@@ -52,7 +52,7 @@ var seriesExampleError = ApexAxisChartSeries<ApexAxisChartSeriesData<num, num>>(
   name: 'sales',                                 //         |         |    |
   data: [ // ------Should be list of type --->  ------------|         |    |
     ApexAxisChartSeriesData(                                     //   |    |
-      x: "", // <- Type Error, Should be num -------------------------|    |
+      // x: "", // <- Type Error, Should be num ----------------------|    |
       y: 43, // - Okay ---> -----------------------------------------------|
       fillColor: '#39f',
       strokeColor: '#fef'
@@ -61,7 +61,7 @@ var seriesExampleError = ApexAxisChartSeries<ApexAxisChartSeriesData<num, num>>(
 );
 
 var seriesExample = ApexAxisChartSeries<ApexAxisChartSeriesData<num, num>>(
-  name: 'sales',
+  name: 'sales error',
   data: [
     ApexAxisChartSeriesData(
         x: 23,
@@ -75,13 +75,19 @@ var seriesExample = ApexAxisChartSeries<ApexAxisChartSeriesData<num, num>>(
 void main() {
   DivElement div = querySelector('#output');
 
+  var exampleChart = ApexCharts(querySelector('#salesChart'),
+      ApexOptions(
+        series: [seriesExample, seriesExampleError]
+      )
+  );
+
   var sales = ApexAxisChartSeries<num>();
   sales.name = 'shoe sales';
   // The types valid for sales are a list of Type in ApexAxisChartSeries<Type>. That is, a list of numbers
   var shoeSalesLastYear = List<num>.from([30,40,35,50,49,60,70,91,125]);
   var shoeSales = List<num>.from([34,43,25,53,45,66,77,93,133]);
 
-  sales = shoeSalesLastYear + shoeSales;
+  sales.data = shoeSalesLastYear + shoeSales;
 
   var moreSales = ApexAxisChartSeries<num>();
   moreSales.name = 'bag sales';
@@ -92,7 +98,7 @@ void main() {
     )
   );
 
-  ApexNonAxisChartSeries<num> donutData;
+  List<num> donutData;
   donutData.addAll([24.5, 74.5]); // 24.5% and 75.5%
   donutData.add(1.5); // 1.5%
 
@@ -104,6 +110,10 @@ void main() {
       series: donutData
     )
   );
+
+
+
+  //series is type List<ApexAxisChartSeries<num>>();
 
   var options = ApexOptions(
     chart: ApexChart(
@@ -139,7 +149,7 @@ void main() {
     data.removeAt(0);
     data.add(Random().nextInt(130));
 
-    series.first = data;
+    series.first.data = data;
 
     chart.updateSeries(series, true);
 

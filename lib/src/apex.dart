@@ -21,8 +21,8 @@ class ApexCharts {
   external factory ApexCharts(Element element, ApexOptions options);
   external PromiseType<void> render();
   external PromiseType<void> updateOptions(ApexUpdate update);
-  external void updateSeries(Iterable<ApexChartSeries> newSeries, bool animate);
-  external void appendSeries(Iterable<ApexChartSeries> newSeries, bool animate);
+  external void updateSeries(Iterable newSeries, bool animate);
+  external void appendSeries(Iterable newSeries, bool animate);
   external dynamic toggleSeries(String seriesName);
   external void showSeries(String seriesName);
   external void hideSeries(String seriesName);
