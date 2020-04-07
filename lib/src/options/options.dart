@@ -54,7 +54,7 @@ class ApexOptions {
     ApexNoData noData,
     ApexPlotOptions plotOptions,
     Iterable<ApexResponsive> responsive,
-    Iterable<ApexChartSeries> series,
+    Iterable<dynamic> series,
     ApexStates states,
     ApexStroke stroke,
     ApexTitleSubtitle subtitle,
